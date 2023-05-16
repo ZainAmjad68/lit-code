@@ -16,3 +16,8 @@ https://github.com/ZainAmjad68/lit-code/blob/main/Array/contains-duplicate.py
 #### Time/Space Complexity:
 - Time complexity: O(n)
 - Space complexity: O(n)
+### Best Other Solution (it's slow but concise)
+```python
+def containsDuplicate(nums):
+	return len(set(nums)) != len(nums)
+```
