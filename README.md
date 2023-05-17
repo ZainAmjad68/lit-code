@@ -6,7 +6,7 @@ A Self-Improvement initiative to make myself a better programmer - This repo wil
 ### [Contains Duplicate:](https://leetcode.com/problems/contains-duplicate/description/)
 Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
-#### Mindset:
+#### Different Possible Mindset:
     - Brute Force 'for' loop
     - Hash Map
     - Sorting the Array.
@@ -21,3 +21,29 @@ https://github.com/ZainAmjad68/lit-code/blob/main/Array/contains-duplicate.py
 def containsDuplicate(nums):
 	return len(set(nums)) != len(nums)
 ```
+### Comments
+First thought was to use a brute force for loop that scans the entire array for a duplicate of each element. Then Hash Maps came into mind. And since Sets are just Maps with no repetitions, they were the obvious solution.
+
+Could've done better. The whole thing took me 20 minutes but the solution was not much better than others in runtime or space complexity.
+
+### [Valid Anagram:](https://leetcode.com/problems/valid-anagram/description/)
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+#### Different Possible Mindsets:
+    - Hash Map
+    - Sorting both strings and comparing.
+    - Integer Arrays
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-anagram.py
+#### Time/Space Complexity:
+- Time complexity: O(2n)
+- Space complexity: O(n + n)
+### Best Other Solution (it's slow but concise)
+```python
+def isAnagram(self, s, t):
+        return sorted(s.strip()) == sorted(t.strip())
+```
+### Comments
+Started off with Dictionary in mind i.e.; using a loop to add all the letters of 's' in a dictionary and incrementing a count. Then, use another loop to check if the word exists in dictionary, and keep a separate count as well. Return true if all letters exist and count is same.
+The above idea evolved to having two dictionaries for both strings, with each containing the count of each letter's frequency in the string so that no separate counters are needed. Then, we simply compare if the two dictionaries are equal.
+
+One of my better solutions. The complete thing took me 20,25 minutes but the solution was better than 86% in runtime and 97% in space complexity.
