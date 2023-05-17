@@ -1,5 +1,4 @@
-# lit-code
-A Self-Improvement initiative to make myself a better programmer - This repo will contain the problems I solve and my mindset behind solving them.
+Solving LeetCode problems following the recommended [RoadMap by Neetcode](https://neetcode.io/roadmap).
 
 ## Array Problems
 
