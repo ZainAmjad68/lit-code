@@ -52,4 +52,37 @@ The above idea evolved to having two dictionaries for both strings, with each co
 
 ---
 
+### [Two Sum:](https://leetcode.com/problems/valid-anagram/description/)
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+#### Different Possible Mindsets:
+- [Hash Map](https://github.com/ZainAmjad68/lit-code/blob/main/Array/two-sum.py)
+- [Brute Force](https://leetcode.com/problems/two-sum/solutions/3353650/brute-force-solution/)
+- [Binary Search](https://leetcode.com/problems/two-sum/solutions/1636227/using-binary-search/)
+- [Two Pointer](https://leetcode.com/problems/two-sum/solutions/662/python-dictionary-and-two-pointer-solutions/)
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/two-sum.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (two pointer; not optimal but easier to visualize)
+```python
+def twoSum(self, nums, target):
+    nums = enumerate(nums)
+    nums = sorted(nums, key=lambda x:x[1])
+    l, r = 0, len(nums)-1
+    while l < r:
+        if nums[l][1]+nums[r][1] == target:
+            return sorted([nums[l][0], nums[r][0]])
+        elif nums[l][1]+nums[r][1] < target:
+            l += 1
+        else:
+            r -= 1
+```
+### Comments
+First thought was to use the Brute Force solution, but we can obviously do better. Then, started thinking about the possibilities of solving it after sorting. First thing that came to mind was Binary Search. But that was an O(n*log(n)) solution at best. Wasn't able to readily implement the Binary Search solution and couldn't think of a better approach so looked at the solution.
+
+**Didn't get the optimized Solution on my own. Mind was stuck on a Binary Search focused solution (which would've taken O(n*logn)). But, after watching the NeetCode solution explanation, i was able to code the O(n) solution in 5,10 minutes and the solution was better than 85% in runtime and 88% in space complexity.**
+
+---
+
 
