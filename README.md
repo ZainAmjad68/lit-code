@@ -52,7 +52,7 @@ The above idea evolved to having two dictionaries for both strings, with each co
 
 ---
 
-### [Two Sum:](https://leetcode.com/problems/valid-anagram/description/)
+### [Two Sum:](https://leetcode.com/problems/two-sum/)
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 #### Different Possible Mindsets:
 - [Hash Map](https://github.com/ZainAmjad68/lit-code/blob/main/Array/two-sum.py)
