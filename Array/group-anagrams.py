@@ -37,6 +37,7 @@ class Solution(object):
 
             localList = [st];
             # if there are anagrams, add them to the final list
+            # and remove them from input list so that we don't iterate on them again
             for sl in sameLength:
                 isAna = self.isAnagram(st, sl);
                 print(isAna);
