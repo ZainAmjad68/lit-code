@@ -85,4 +85,54 @@ First thought was to use the Brute Force solution, but we can obviously do bette
 
 ---
 
+### [Group Anagrams:](https://leetcode.com/problems/group-anagrams/)
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+#### Different Possible Mindsets:
+- [Hash Table](https://leetcode.com/problems/group-anagrams/solutions/2384037/python-easily-understood-hash-table-fast-simple/)
+- [Single Pass (My Way)](https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-anagrams.py)
+- [Two Solutions using Defaultdict/GroupBy](https://leetcode.com/problems/group-anagrams/solutions/3280005/two-python-solutions-with-result-screenshots/)
+#### My Solution (Does Not Pass All Test Cases):
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-anagrams.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (easier to visualize but perhaps not the fastest)
+```python
+def groupAnagrams(self, strs):
+    strs_table = {}
+
+    for string in strs:
+    	# sort the string
+        sorted_string = ''.join(sorted(string))
+	
+	# if hash key for that string doesn't exist yet, create it and assign it a list
+	# that list will contain anagrams belonging to that group
+        if sorted_string not in strs_table:
+            strs_table[sorted_string] = []
+	
+	# add the string to the appropriate hash key
+        strs_table[sorted_string].append(string)
+
+    return list(strs_table.values())
+
+"""
+Visualization:
+for an input of type:
+strs = ["eat","tea","tan","ate","nat","bat"];
+this is how the Hash Table looks:
+{'aet': ['eat', 'tea', 'ate'], 'ant': ['tan', 'nat'], 'abt': ['bat']}
+"""
+```
+### Comments
+I went with the first approach that came into my mind, which was to take a string and find all of its anagrams (::compare with only those in the list that have the same length::), remove them from the list and form a list of their own and do this again for the remaining strings in the list.
+
+This should be much better than brute force as we skip comparisons b/w strings with unequal length and also remove all the anagrams that belong together in each iteration.
+
+**Seemed like a good solution until some test cases started failing. Nevertheless, came up with the whole approach myself and then coded it within 30 mins so that's decent. But the optimized solution, which uses Sorting and Hashing is much simpler to understand although not better in complexity imo.**
+
+---
+
+
+
+
 
