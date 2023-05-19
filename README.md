@@ -91,6 +91,7 @@ Given an array of strings strs, group the anagrams together. You can return the 
 - [Hash Table](https://leetcode.com/problems/group-anagrams/solutions/2384037/python-easily-understood-hash-table-fast-simple/)
 - [Single Pass (My Way)](https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-anagrams.py)
 - [Two Solutions using Defaultdict/GroupBy](https://leetcode.com/problems/group-anagrams/solutions/3280005/two-python-solutions-with-result-screenshots/)
+- [Categorizing Strings by Count (NeetCode)](https://github.com/neetcode-gh/leetcode/blob/main/python/0049-group-anagrams.py)
 #### My Solution (Does Not Pass All Test Cases):
 https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-anagrams.py
 #### Time/Space Complexity:
@@ -128,7 +129,18 @@ I went with the first approach that came into my mind, which was to take a strin
 
 This should be much better than brute force as we skip comparisons b/w strings with unequal length and also remove all the anagrams that belong together in each iteration.
 
-**Seemed like a good solution until some test cases started failing. Nevertheless, came up with the whole approach myself and then coded it within 30 mins so that's decent. But the optimized solution, which uses Sorting and Hashing is much simpler to understand although not better in complexity imo.**
+NeetCode solution (given above) is interesting too as it uses a boolean list of all alphabets (with 1's at places where a string character exists and 0's at other places) as the key to hash.
+So, for the same input as in best solution above, the hash looks like this:
+```
+Input: ["eat","tea","tan","ate","nat","bat"]
+Resultant Hash Map: 
+{
+	(1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0): ['eat', 'tea', 'ate'], 
+	(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0): ['tan', 'nat'], 
+	(1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0): ['bat']
+}
+```
+**My approach seemed like a good solution until some test cases started failing. Nevertheless, came up with the whole approach myself and then coded it within 30 mins so that's decent. But the optimized solution, which uses Sorting and Hashing is much simpler to understand although not better in complexity imo.**
 
 ---
 
