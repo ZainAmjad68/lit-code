@@ -144,6 +144,30 @@ Resultant Hash Map:
 
 ---
 
+### [Top K Frequent Elements:](https://leetcode.com/problems/top-k-frequent-elements)
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+#### Different Possible Mindsets:
+- [Hash Map](https://github.com/ZainAmjad68/lit-code/blob/main/Array/top-k-frequent.py)
+- [Heap (no sorting so best solution runtime wise)](https://leetcode.com/problems/top-k-frequent-elements/solutions/3246298/347-time-91-58-solution-with-step-by-step-explanation/)
+- [Bucket Sort (NeetCode, O(n) solution](https://leetcode.com/problems/top-k-frequent-elements/solutions/3246298/347-time-91-58-solution-with-step-by-step-explanation/)
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/top-k-frequent.py
+#### Time/Space Complexity:
+if m is the number of unique elements in the list:
+- Time complexity: O(n + m log m + k)
+- Space complexity: O(m + k)
+### Best Other Solution (uses built in function but very concise)
+```python
+def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    return [x for x,_ in Counter(nums).most_common(k)]
+```
+### Comments
+Went with the first solution that came into my mind as i was sure it would be much better than brute force. It did involve sorting which makes me think there are better solutions out there.
+
+**NeetCode solution is clever but it requires a good amount of thinking (he uses Bucket Sort), my solution was quite intuitive and i was able to code it quite fast too. And its not too bad in terms of complexity.**
+
+---
+
 
 
 
