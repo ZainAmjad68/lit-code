@@ -177,9 +177,8 @@ Given an integer array nums, return an array answer such that answer[i] is equal
 #### My Solution:
 https://github.com/ZainAmjad68/lit-code/blob/main/Array/array-product.py
 #### Time/Space Complexity:
-if m is the number of unique elements in the list:
-- Time complexity: O(n + m log m + k)
-- Space complexity: O(m + k)
+- Time complexity: O(n)
+- Space complexity: O(1)
 ### Best Other Solution (very efficient but not v intuitive)
 ```python
 class Solution:
