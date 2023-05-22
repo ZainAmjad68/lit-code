@@ -168,6 +168,40 @@ Went with the first solution that came into my mind as i was sure it would be mu
 
 ---
 
+### [Product of Array except Self:](https://leetcode.com/problems/product-of-array-except-self)
+Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+#### Different Possible Mindsets:
+- [using Division](https://leetcode.com/problems/product-of-array-except-self/solutions/1709002/simple-solution-using-division/)
+- [Left Product and Right Product](https://leetcode.com/problems/product-of-array-except-self/solutions/3231758/238-time-96-95-solution-with-step-by-step-explanation/)
+- [Prefix and Postfix](https://github.com/ZainAmjad68/lit-code/blob/main/Array/array-product.py)
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/array-product.py
+#### Time/Space Complexity:
+if m is the number of unique elements in the list:
+- Time complexity: O(n + m log m + k)
+- Space complexity: O(m + k)
+### Best Other Solution (very efficient but not v intuitive)
+```python
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        res = [1] * (len(nums))
+        prefix = 1
+        for i in range(len(nums)):
+            res[i] = prefix
+            prefix *= nums[i]
+        postfix = 1
+        for i in range(len(nums) - 1, -1, -1):
+            res[i] *= postfix
+            postfix *= nums[i]
+        return res
+```
+### Comments
+By far the worst i've done at a problem so far. Except for the simple solution involving Division (which may fail in cases involving 0s), I couldn't think of anything. So, after a bit, I started looking at Solutions and even that took a while to fully sink in. 
+
+**Solution for this is not intuitive, but i've exlpained the thinking behind the solution in my code. Probably will have to keep it somewhere in my mind for future problems. Tricky Question.**
+
+---
+
 
 
 
