@@ -209,7 +209,7 @@ Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be val
 #### Different Possible Mindsets:
 - [Naive (Evaluating Rows, Columns and Sub-Boxes separately)](https://leetcode.com/problems/valid-sudoku/solutions/15451/a-readable-python-solution/)
 - [Adding all groups in a List and using Set Length](https://leetcode.com/problems/valid-sudoku/solutions/3277043/beats-96-78-short-7-line-python-solution-with-detailed-explanation/)
-- [Different Sets for Row, Column and Sub-Box (NeetCode)](https://github.com/neetcode-gh/leetcode/blob/main/python/0036-valid-sudoku.py)
+- [Different Sets for Row, Column and Sub-Box; Each Key in Dict is the col/row no. and Values are the numbers in that col/row (NeetCode)](https://github.com/neetcode-gh/leetcode/blob/main/python/0036-valid-sudoku.py)
 #### My Solution:
 https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-sudoku.py
 #### Time/Space Complexity:
