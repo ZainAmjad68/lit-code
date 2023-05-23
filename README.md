@@ -201,6 +201,41 @@ By far the worst i've done at a problem so far. Except for the simple solution i
 
 ---
 
+### [Valid Sudoku:](https://leetcode.com/problems/valid-sudoku)
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+- Each row must contain the digits 1-9 without repetition.
+- Each column must contain the digits 1-9 without repetition.
+- Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+#### Different Possible Mindsets:
+- [Naive (Evaluating Rows, Columns and Sub-Boxes separately)](https://leetcode.com/problems/valid-sudoku/solutions/15451/a-readable-python-solution/)
+- [Adding all groups in a List and using Set Length](https://leetcode.com/problems/valid-sudoku/solutions/3277043/beats-96-78-short-7-line-python-solution-with-detailed-explanation/)
+- [Different Sets for Row, Column and Sub-Box (NeetCode)](https://github.com/neetcode-gh/leetcode/blob/main/python/0036-valid-sudoku.py)
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-sudoku.py
+#### Time/Space Complexity:
+- Time complexity: O(n^2)
+- Space complexity: O(n^2)
+### Best Other Solution (intuitive, though takes up a good amount of space)
+```python
+def isValidSudoku(self, board):
+    res = []
+    for i in range(9):
+        for j in range(9):
+            element = board[i][j]
+            if element != '.':
+                res += [(i, element), (element, j), (i // 3, j // 3, element)]
+    # Tuples representing different groups are never equal 
+    # (since tuple for row is Tuple[int, str] type, tuple for column is Tuple[str, int] and sub-box - Tuple[int, int, str])
+    # So, a Set will eliminate the identical groups so its length will always be less than the length of original list
+    return len(res) == len(set(res))
+```
+### Comments
+Have not solved a lot of multi-dimensional problems, nor in practical life or during bachelors. So, couldn't come up with a optimized technique to solve this. Was still able to solve it using the naive approach, evaluating the rows, columns and sub-boxes separately. The solution is slow but it works.
+
+**Multi-Dimensional Problems can be confusing. Solutions given were similar in nature, using Sets to evaluate if there's any repitition. 
+My solution was better than only 6% at runtime and 50% at space complexity. So, should definitely use optimized techniques to solve in future.**
+
+---
 
 
 
