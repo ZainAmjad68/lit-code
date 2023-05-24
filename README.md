@@ -237,6 +237,42 @@ My solution was better than only 6% at runtime and 50% at space complexity. So, 
 
 ---
 
+### [Encode and Decode Strings:](https://www.lintcode.com/problem/659)
+Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+#### Different Possible Mindsets:
+- [My Approach](https://github.com/ZainAmjad68/lit-code/blob/main/Array/encode-decode.py)
+- [NeetCode (similar approach)](https://github.com/neetcode-gh/leetcode/blob/main/python/0271-encode-and-decode-strings.py)
+- [A Medium Solution](https://medium.com/@miniChang8/leetcode-encode-and-decode-strings-4dde7e0efa1c)
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/encode-decode.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (similar to mine, may have a bit less space complexity)
+```python
+def encode(self, strs):
+    res = ""
+    for s in strs:
+        res += str(len(s)) + "#" + s
+    return res
+
+def decode(self, s):
+    res, i = [], 0
+
+    while i < len(s):
+        j = i
+        while s[j] != "#":
+            j += 1
+        length = int(s[i:j])
+        res.append(s[j + 1 : j + 1 + length])
+        i = j + 1 + length
+    return res
+```
+### Comments
+Didn't understand the problem at first as it's an odd one compared to others. There's really only one approach that makes sense and most solutions on internet follow that approach. (encoding/decoding in format lengthOfWord + a delimiter + the actual word i.e.; ['i', 'am', 'groot'] converts to 1#i2#am5#groot and vice versa.)
+**Once I understood the problem and the approach required, it took 15 mins to code the solution. And it's similar to other solutions on the internet.**
+
+---
 
 
 
