@@ -274,5 +274,38 @@ Didn't understand the problem at first as it's an odd one compared to others. Th
 
 ---
 
+### [Encode and Decode Strings:](https://www.lintcode.com/problem/659)
+Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+#### Different Possible Mindsets:
+- [Brute Force](https://leetcode.com/problems/longest-consecutive-sequence/solutions/2238932/c-python-simple-solution-w-explanation-o-n-o-n/)
+- [Sorting](https://github.com/ZainAmjad68/lit-code/blob/main/Array/longest-consecutive-sequence.py)
+- [Set](https://github.com/neetcode-gh/leetcode/blob/main/python/0128-longest-consecutive-sequence.py)
+#### My Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Array/longest-consecutive-sequence.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (easy to understand, and best runtime as well)
+```python
+def longestConsecutive(self, nums):
+    numSet = set(nums)
+    longest = 0
+
+    for n in nums:
+        if (n - 1) not in numSet:
+            length = 1
+            while (n + length) in numSet:
+                length += 1
+            longest = max(length, longest)
+    return longest
+```
+### Comments
+Could Not figure out a O(n) solution, so decided to go ahead with the next best one that i knew i.e.; Sorting and then a bunch of if statements. Coded that in 10 mins, but handling edge cases afterwards took ~30 mins. :(
+
+
+**The Optimal Solution was so simple but not intuitive (to me). Hopefully, i'll start to make these connections in the future once i've solved enough problems.
+Still, my current solution was better than 52% in runtime and 89% in space complexity so i did okay.**
+
+---
 
 
