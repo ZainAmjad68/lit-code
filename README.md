@@ -274,8 +274,10 @@ Didn't understand the problem at first as it's an odd one compared to others. Th
 
 ---
 
-### [Encode and Decode Strings:](https://www.lintcode.com/problem/659)
-Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+### [Longest Consecutive Sequence:](https://leetcode.com/problems/longest-consecutive-sequence)
+Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+
+You must write an algorithm that runs in O(n) time.
 #### Different Possible Mindsets:
 - [Brute Force](https://leetcode.com/problems/longest-consecutive-sequence/solutions/2238932/c-python-simple-solution-w-explanation-o-n-o-n/)
 - [Sorting](https://github.com/ZainAmjad68/lit-code/blob/main/Array/longest-consecutive-sequence.py)
