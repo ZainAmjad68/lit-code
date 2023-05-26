@@ -16,9 +16,7 @@ class Solution(object):
         sortedList = sorted(nums);
         print('sortedList',sortedList);
         previous = sortedList[0] if sortedList else None;
-        for index, num in enumerate(sortedList[1:]):
-            print('num', num);
-            print('longestSequence', longestSequence);
+        for num in sortedList[1:]:
             if previous + 1 == num:
                 longestSequence += 1;
             elif previous == num:
