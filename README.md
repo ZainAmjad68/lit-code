@@ -311,3 +311,38 @@ Still, my current solution was better than 52% in runtime and 89% in space compl
 ---
 
 
+
+
+## Two Pointer Problems
+
+### [Valid Palindrome:](https://leetcode.com/problems/valid-palindrome)
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+#### Different Possible Mindsets:
+- [Reverse the String](https://leetcode.com/problems/valid-palindrome/solutions/3024037/python-regex-explained-beats-99/)
+- [Two Pointer (start -> <- end)](https://leetcode.com/problems/valid-palindrome/solutions/3524673/c-java-python-javascript-simple-code-easy-to-understand/)
+- [NeetCode (has its own non-alphanum function)](https://github.com/neetcode-gh/leetcode/blob/main/python/0125-valid-palindrome.py).
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Two%20Pointers/valid-palindrome.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(1)
+### Best Other Solution (concise, uses regex, reverses and equates)
+```python
+def isPalindrome(self, s):
+        new_s = re.sub(r"[^a-zA-Z0-9\\s+]", "", s).lower();
+        return new_s == new_s[::-1];
+```
+### Comments
+Recognized that Two Pointer solution would be better. Wasted a lot of time looking for a way to iterate string from start and end with the same loop, when i could've used a `while left < right` loop.
+
+Learned some stuff about Regex and Zip which is good.
+
+**Had the right approach. Googling wasted some time when i could've used a simple while loop. Good effort still, but NeetCode solution is more interview friendly though. But to be fair, my solution was better than 89% in runtime but just 5% in space.**
+
+---
+
+
