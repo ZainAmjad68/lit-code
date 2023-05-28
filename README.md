@@ -346,3 +346,41 @@ Learned some stuff about Regex and Zip which is good.
 ---
 
 
+### [Two Sum II - Input Array Is Sorted:](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
+Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 < numbers.length.
+
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+
+#### Different Possible Mindsets:
+- [Brute Force](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/solutions/1756172/python-from-brute-force-optimized-solution-with-intuitive-explaination/)
+- [Binary Search](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/solutions/2682118/python-binary-search-o-n-log-n-time-o-1-space-clean-code/)
+- [Dictionary](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/solutions/51249/python-different-solutions-two-pointer-dictionary-binary-search/).
+- [Two Pointers](https://github.com/neetcode-gh/leetcode/blob/main/python/0167-two-sum-ii-input-array-is-sorted.py)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Two-Pointers/two-sum-pt2-sorted-input-array.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(1)
+### Best Other Solution (concise, uses regex, reverses and equates)
+```python
+def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    l, r = 0, len(numbers) - 1
+
+    while l < r:
+        curSum = numbers[l] + numbers[r]
+
+        if curSum > target:
+            r -= 1
+        elif curSum < target:
+            l += 1
+        else:
+            return [l + 1, r + 1]
+```
+### Comments
+Solution was rather simple but i made it complicated in my head. First, i thought about moving two pointers along with each other. Then, having one pointer at start and other one at end made more sense. And that's how NeetCode had done it as well.
+
+**Had the right approach. Complicated it for myself which wasted time. Solution was better than 55% in runtime and 89% in space complexity.**
+
+---
+
+
