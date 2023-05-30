@@ -383,4 +383,53 @@ Solution was rather simple but i made it complicated in my head. First, i though
 
 ---
 
+### [Three Sum:](https://leetcode.com/problems/3sum)
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+
+#### Different Possible Mindsets:
+- [Two Pointer](https://leetcode.com/problems/3sum/solutions/3109452/c-easiest-beginner-friendly-sol-set-two-pointer-approach-o-n-2-logn-time-and-o-n-space/)
+- [Handle different cases in Individual Steps](https://leetcode.com/problems/3sum/solutions/725950/python-5-easy-steps-beats-97-4-annotated/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Two-Pointers/3-sum.py
+#### Time/Space Complexity:
+- Time complexity: O(n^2 logn)
+- Space complexity: O(n)
+### Best Other Solution (NeetCode one)
+```python
+def ThreeSum(self, integers):
+    """
+    :type integers: List[int]
+    :rtype: List[List[int]]
+    """
+    integers.sort()
+    result = []
+    for index in range(len(integers)):
+        if integers[index] > 0:
+            break
+        if index > 0 and integers[index] == integers[index - 1]:
+            continue
+        left, right = index + 1, len(integers) - 1
+        while left < right:
+            if integers[left] + integers[right] < 0 - integers[index]:
+                left += 1
+            elif integers[left] + integers[right] > 0 - integers[index]:
+                right -= 1
+            else:
+                result.append([integers[index], integers[left], integers[right]]) # After a triplet is appended, we try our best to incease the numeric value of its first element or that of its second.
+                left += 1 # The other pairs and the one we were just looking at are either duplicates or smaller than the target.
+                right -= 1 # The other pairs are either duplicates or greater than the target.
+                # We must move on if there is less than or equal to one integer in between the two integers.
+                while integers[left] == integers[left - 1] and left < right:
+                    left += 1 # The pairs are either duplicates or smaller than the target.
+    return result
+```
+### Comments
+I was close to the solution, but was struggling with visualizing a while loop inside the for loop. Looking at a solution made things clear. Questions involving triplets can be a bit confusing, need some focus.
+
+**Pretty much the same single approach is being used in all of the solutions i.e.; the for loop runs for every element i, meanwhile the while loop starts with i+1 and last element and those two continuously move towards each other.**
+
+---
+
 
