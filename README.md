@@ -383,6 +383,7 @@ Solution was rather simple but i made it complicated in my head. First, i though
 
 ---
 
+
 ### [Three Sum:](https://leetcode.com/problems/3sum)
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
@@ -429,6 +430,43 @@ def ThreeSum(self, integers):
 I was close to the solution, but was struggling with visualizing a while loop inside the for loop. Looking at a solution made things clear. Questions involving triplets can be a bit confusing, need some focus.
 
 **Pretty much the same single approach is being used in all of the solutions i.e.; the for loop runs for every element i, meanwhile the while loop starts with i+1 and last element and those two continuously move towards each other.**
+
+---
+
+
+### [Container With Most Water:](https://leetcode.com/problems/container-with-most-water/description/)
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+#### Different Possible Mindsets:
+- [Brute Force](https://leetcode.com/problems/container-with-most-water/solutions/1915744/python-brute-force-two-pointer/)
+- [Two Pointer](https://github.com/neetcode-gh/leetcode/blob/main/python/0011-container-with-most-water.py)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Two-Pointers/container-with-most-water.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (not as readable, but concise)
+```python
+def maxArea(self, H: List[int]) -> int:
+    ans, i, j = 0, 0, len(H)-1
+    while (i < j):
+        if H[i] <= H[j]:
+            res = H[i] * (j - i)
+            i += 1
+        else:
+            res = H[j] * (j - i)
+            j -= 1
+        if res > ans: ans = res
+    return ans
+```
+### Comments
+LeetCode explanation of the problems sucked, so i looked at the discussion to understand the problem and once i did, the solution came fairly easy. Coded the optimal solution in 6,7 mins.
+
+**Got the Solution easily prolly because my head was clear which goes a long way. The solution was better than 52% in runtime and 89% in space.**
 
 ---
 
