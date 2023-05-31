@@ -471,3 +471,44 @@ LeetCode explanation of the problems sucked, so i looked at the discussion to un
 ---
 
 
+
+### [Trapping Rain Water:](https://leetcode.com/problems/trapping-rain-water/description/)
+Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+
+#### Different Possible Mindsets:
+- [Brute Force O(n) space and time](https://leetcode.com/problems/trapping-rain-water/solutions/3387829/c-java-python-javascript-o-n-time-o-1-space-brute-force-optimized-code/)
+- [Dynamic Programming](https://leetcode.com/problems/trapping-rain-water/solutions/2589802/leetcode-the-hard-way-explained-line-by-line/)
+- [Two Pointer (Optimized O(1) space)](https://github.com/neetcode-gh/leetcode/blob/main/python/0042-trapping-rain-water.py)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Two-Pointers/trapping-rain-water.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(1)
+### Best Other Solution (not as readable, but concise)
+```python
+def trap(self, height: List[int]) -> int:
+    i, j, ans, mx, mi = 0, len(height) - 1, 0, 0, 0
+    # two pointers 
+    # pointer i from the left
+    # pointer j from the right
+    while i <= j:
+        # take the min height
+        mi = min(height[i], height[j])
+        # find the max min height
+        mx = max(mx, mi)
+        # the units of water being tapped is the diffence between max height and min height
+        ans += mx - mi
+        # move the pointer i if height[i] is smaller
+        if height[i] < height[j]: i += 1
+        # else move pointer j
+        else: j -= 1
+    return ans
+```
+### Comments
+Not easy to come up with the Algo on your own, but quite easy to understand the Brute Force Approach [O(n) space]. The optimized approach is a bit more tricky but still understandable.
+
+**Was able to code once I understood the algo, Will need to keep it in mind. Solution was better than 70% in runtime and 90% in space complexity.**
+
+---
+
+
