@@ -512,3 +512,38 @@ Not easy to come up with the Algo on your own, but quite easy to understand the 
 ---
 
 
+
+
+
+## Stack Problems
+
+### [Valid Parentheses:](https://leetcode.com/problems/valid-palindrome)
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+* Open brackets must be closed by the same type of brackets.
+* Open brackets must be closed in the correct order.
+* Every close bracket has a corresponding open bracket of the same type.
+
+#### Different Possible Mindsets:
+- [Using Stack](https://leetcode.com/problems/valid-palindrome/solutions/3024037/python-regex-explained-beats-99/)
+- [Two Pointer (start -> <- end)](https://leetcode.com/problems/valid-palindrome/solutions/3524673/c-java-python-javascript-simple-code-easy-to-understand/)
+- [NeetCode (has its own non-alphanum function)](https://github.com/neetcode-gh/leetcode/blob/main/python/0125-valid-palindrome.py).
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/valid-parentheses.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(1)
+### Best Other Solution (concise, uses regex, reverses and equates)
+```python
+def isPalindrome(self, s):
+        new_s = re.sub(r"[^a-zA-Z0-9\\s+]", "", s).lower();
+        return new_s == new_s[::-1];
+```
+### Comments
+Stack based solution didn't come into mind so i went with using a Dictionary to keep count of each symbol and then returning true if the number of opening symbols of a specific parentheses are equal to its closing symbols. This sounded good on paper but was difficult to implement. Then, took a look at Stack solution and it was quite intuitive and easy so went with that.
+
+**Dictionary based attempt took way too long, a lot of edge cases. Should've pivoted to Stack based solution much earlier as it was easier and much more concise. Stack solution surpassed 85% in runtime and 90% in space.**
+
+
+---
+
