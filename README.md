@@ -533,7 +533,7 @@ https://github.com/ZainAmjad68/lit-code/blob/main/Stack/valid-parentheses.py
 #### Time/Space Complexity:
 - Time complexity: O(n)
 - Space complexity: O(n)
-### Best Other Solution (concise, uses regex, reverses and equates)
+### Best Other Solution (concise and easy to understand)
 ```python
 def isValid(self, s):
     """
@@ -581,7 +581,7 @@ https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
 #### Time/Space Complexity:
 - Time complexity: O(1)
 - Space complexity: O(n)
-### Best Other Solution (concise, uses regex, reverses and equates)
+### Best Other Solution (faster and less space complexity because of single stack)
 ```python
 class MinStack:
     def __init__(self):
