@@ -561,3 +561,61 @@ Stack based solution didn't come into mind so i went with using a Dictionary to 
 
 ---
 
+### [Min Stack:](https://leetcode.com/problems/min-stack/)
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+Implement the MinStack class:
+- MinStack() initializes the stack object.
+- void push(int val) pushes the element val onto the stack.
+- void pop() removes the element on the top of the stack.
+- int top() gets the top element of the stack.
+**- int getMin() retrieves the minimum element in the stack.**
+You must implement a solution with **O(1) time complexity** for each function.
+
+#### Different Possible Mindsets:
+- [Using Separate Stack for Min](https://github.com/neetcode-gh/leetcode/blob/main/python/0155-min-stack.py)
+- [Use a Single Stack for both Val and Min (Hint: Make use of Tuples)](https://leetcode.com/problems/min-stack/solutions/3545225/c-java-python-javascript-simple-solution-with-o-1-time-complexity-for-each-function-as-asked/)
+- [Using a separate Deque)](https://leetcode.com/problems/min-stack/solutions/2812426/python-solution-with-explanation/).
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
+#### Time/Space Complexity:
+- Time complexity: O(1)
+- Space complexity: O(n)
+### Best Other Solution (concise, uses regex, reverses and equates)
+```python
+class MinStack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, val):
+        if not self.stack:
+            self.stack.append((val, val))
+        else:
+            mn = min(self.stack[-1][1], val)
+            self.stack.append((val, mn))
+
+    def pop(self):
+        if self.stack:
+            self.stack.pop()
+
+    def top(self):
+        if self.stack:
+            return self.stack[-1][0]
+        return 0
+
+    def getMin(self):
+        if self.stack:
+            return self.stack[-1][1]
+        return 0
+```
+### Comments
+First thought was to use a min variable, and update the min value on push. But then realized that when we pop something, there's a chance that min value is no longer accurate so we have to update it there too. But, how can we do it in O(1)? We can't. Will have to go through the stack to find the new min.
+
+Then, saw the comments talking about keeping a separate min stack and manipulating it on push and pop. So, that is the approach i used.
+
+**Intuitive to go for a separate min value to keep track. But once you realize the problems with that, a separate stack is the obvious solution. There's another cheeky way to [use tuples with a single stack](https://leetcode.com/problems/min-stack/solutions/3545225/c-java-python-javascript-simple-solution-with-o-1-time-complexity-for-each-function-as-asked/) to achieve the same thing. My solution with two stacks was better than 65% at runtime and 55% at space.**
+
+---
+
+
+
