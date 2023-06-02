@@ -525,19 +525,33 @@ An input string is valid if:
 * Every close bracket has a corresponding open bracket of the same type.
 
 #### Different Possible Mindsets:
-- [Using Stack](https://leetcode.com/problems/valid-palindrome/solutions/3024037/python-regex-explained-beats-99/)
-- [Two Pointer (start -> <- end)](https://leetcode.com/problems/valid-palindrome/solutions/3524673/c-java-python-javascript-simple-code-easy-to-understand/)
-- [NeetCode (has its own non-alphanum function)](https://github.com/neetcode-gh/leetcode/blob/main/python/0125-valid-palindrome.py).
+- [Using Stack and HashMap](https://github.com/neetcode-gh/leetcode/blob/main/python/0020-valid-parentheses.py)
+- [Using Python Replace](https://leetcode.com/problems/valid-parentheses/solutions/885074/python-solution-in-5-lines/)
+- [Using Stack Only)](https://leetcode.com/problems/valid-parentheses/solutions/3399077/easy-solutions-in-java-python-and-c-look-at-once-with-exaplanation/).
 #### Solution:
 https://github.com/ZainAmjad68/lit-code/blob/main/Stack/valid-parentheses.py
 #### Time/Space Complexity:
 - Time complexity: O(n)
-- Space complexity: O(1)
+- Space complexity: O(n)
 ### Best Other Solution (concise, uses regex, reverses and equates)
 ```python
-def isPalindrome(self, s):
-        new_s = re.sub(r"[^a-zA-Z0-9\\s+]", "", s).lower();
-        return new_s == new_s[::-1];
+def isValid(self, s):
+    """
+    :type s: str
+    :rtype: bool
+    """
+    d = {'(':')', '{':'}','[':']'}
+    stack = []
+    for i in s:
+        if i in d:  # 1
+            stack.append(i)
+        elif len(stack) == 0 or d[stack.pop()] != i:  # 2
+            return False
+    return len(stack) == 0 # 3
+
+# 1. if it's the left bracket then we append it to the stack
+# 2. else if it's the right bracket and the stack is empty(meaning no matching left bracket), or the left bracket doesn't match
+# 3. finally check if the stack still contains unmatched left bracket
 ```
 ### Comments
 Stack based solution didn't come into mind so i went with using a Dictionary to keep count of each symbol and then returning true if the number of opening symbols of a specific parentheses are equal to its closing symbols. This sounded good on paper but was difficult to implement. Then, took a look at Stack solution and it was quite intuitive and easy so went with that.
