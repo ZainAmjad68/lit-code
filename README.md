@@ -512,3 +512,52 @@ Not easy to come up with the Algo on your own, but quite easy to understand the 
 ---
 
 
+
+
+
+## Stack Problems
+
+### [Valid Parentheses:](https://leetcode.com/problems/valid-palindrome)
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+* Open brackets must be closed by the same type of brackets.
+* Open brackets must be closed in the correct order.
+* Every close bracket has a corresponding open bracket of the same type.
+
+#### Different Possible Mindsets:
+- [Using Stack and HashMap](https://github.com/neetcode-gh/leetcode/blob/main/python/0020-valid-parentheses.py)
+- [Using Python Replace](https://leetcode.com/problems/valid-parentheses/solutions/885074/python-solution-in-5-lines/)
+- [Using Stack Only)](https://leetcode.com/problems/valid-parentheses/solutions/3399077/easy-solutions-in-java-python-and-c-look-at-once-with-exaplanation/).
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/valid-parentheses.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (concise, uses regex, reverses and equates)
+```python
+def isValid(self, s):
+    """
+    :type s: str
+    :rtype: bool
+    """
+    d = {'(':')', '{':'}','[':']'}
+    stack = []
+    for i in s:
+        if i in d:  # 1
+            stack.append(i)
+        elif len(stack) == 0 or d[stack.pop()] != i:  # 2
+            return False
+    return len(stack) == 0 # 3
+
+# 1. if it's the left bracket then we append it to the stack
+# 2. else if it's the right bracket and the stack is empty(meaning no matching left bracket), or the left bracket doesn't match
+# 3. finally check if the stack still contains unmatched left bracket
+```
+### Comments
+Stack based solution didn't come into mind so i went with using a Dictionary to keep count of each symbol and then returning true if the number of opening symbols of a specific parentheses are equal to its closing symbols. This sounded good on paper but was difficult to implement. Then, took a look at Stack solution and it was quite intuitive and easy so went with that.
+
+**Dictionary based attempt took way too long, a lot of edge cases. Should've pivoted to Stack based solution much earlier as it was easier and much more concise. Stack solution surpassed 85% in runtime and 90% in space.**
+
+
+---
+
