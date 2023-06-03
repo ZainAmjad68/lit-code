@@ -618,4 +618,47 @@ Then, saw the comments talking about keeping a separate min stack and manipulati
 ---
 
 
+### [Evaluate Reverse Polish Notation:](https://leetcode.com/problems/evaluate-reverse-polish-notation)
+You are given an array of strings tokens that represents an arithmetic expression in a [Reverse Polish Notation](http://en.wikipedia.org/wiki/Reverse_Polish_notation).
+
+Evaluate the expression. Return an integer that represents the value of the expression.
+
+#### Different Possible Mindsets:
+- [Stack (push current answer in there as well](https://leetcode.com/problems/evaluate-reverse-polish-notation/solutions/2920598/easy-solution-w-explanation-c-java-python-no-runtime-error/)
+- [Recursive Approach (not intuitive at all, but neat)](https://leetcode.com/problems/evaluate-reverse-polish-notation/solutions/2920607/python-easy-solution-faster-than-80/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (faster and less space complexity, neat as well)
+```python
+class Solution(object):
+    def evalRPN(self, tokens):
+        s=[]                     #assign a empty stack s
+        for i in tokens:
+            if i not in '-+/*':
+                s+=[int(i)]              #you can also use s.append()
+            else:
+                a=int(s.pop())         
+                b=int(s.pop())
+                if i=='+':
+                    s+=[b+a]
+                elif i=='*':
+                    s+=[b*a]
+                elif i=='-':
+                    s+=[(b-a)]
+                else:
+                    s+=[b/a]
+        return int(s[-1])          #data type int is used for float value
+```
+### Comments
+My Approach was quite close to the one being used in most Solutions, one clever thing they did was to push the result back into the stack, which i didn't do and thus had to handle a bunct of edge cases (pop 2 from stack first time, and then 1 afterwards etc.) separately.
+
+The division operation caused some issues as its done differently on different languages (or even different versions of the same language!).
+
+**A good stack problem, and i was close to optimal solution, so a good effort. In the future, should think of ways to optimize the general case (push current result in the stack in this case) to handle edge cases as well instead of handling them separately.**
+
+---
+
 
