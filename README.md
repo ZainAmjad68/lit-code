@@ -662,3 +662,51 @@ The division operation caused some issues as its done differently on different l
 ---
 
 
+### [Generate Parentheses:](https://leetcode.com/problems/generate-parentheses/description/)
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+Example:
+
+Input: n = 3
+Output: ["((()))","(()())","(())()","()(())","()()()"]
+
+#### Different Possible Mindsets:
+- [DFS (Recursive Approach)](https://leetcode.com/problems/generate-parentheses/solutions/2542620/python-java-w-explanation-faster-than-96-w-proof-easy-to-understand/)
+- [Backtracking](https://github.com/neetcode-gh/leetcode/blob/main/python/0022-generate-parentheses.py)
+- [Using Stack](https://leetcode.com/problems/generate-parentheses/solutions/2712761/beautiful-iterative-python-solution-with-stack/)
+- [Some Random Algos that work](https://leetcode.com/problems/generate-parentheses/solutions/3260192/three-python-solution-that-beats-100-and-91-90-and-93-3/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (uses same intuition as NeetCode, but also utilizes the fact that each combination will be of length n*2)
+```python
+def generateParenthesis(self, n):
+    """
+    :type n: int
+    :rtype: List[str]
+    """
+
+    def dfs(left,right,s):
+        print(s);
+        if len(s)==n*2:
+            return result.append(s) 
+        
+        if left<n:
+            dfs(left+1,right,s+'(')
+        
+        if right< left:
+            dfs(left,right+1,s+')')
+    
+    result=[]
+    dfs(0,0,'')
+    return result
+```
+### Comments
+Only solution I could come up with was to create a list with all combinations of n paranthesis and eliminate the invalid ones, but this would essentially be n^n solution, so very bad.
+
+NeetCode used Backtracking, and by obeying just some simple intuitive rules (Add `(` if `( < n`, Add `)` if `) < (` and return IFF `( == ) == n`), the solution became quite simple and efficient as well.
+
+**Somewhat Familiar with Backtracking, but not enough practical exposure for the mind to go there when i saw this problem. Need to learn more about that and figure out the kind of problems where it can be used.**
+
+---
