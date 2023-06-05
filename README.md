@@ -627,7 +627,7 @@ Evaluate the expression. Return an integer that represents the value of the expr
 - [Stack (push current answer in there as well](https://leetcode.com/problems/evaluate-reverse-polish-notation/solutions/2920598/easy-solution-w-explanation-c-java-python-no-runtime-error/)
 - [Recursive Approach (not intuitive at all, but neat)](https://leetcode.com/problems/evaluate-reverse-polish-notation/solutions/2920607/python-easy-solution-faster-than-80/)
 #### Solution:
-https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/reverse-polish-notation.py
 #### Time/Space Complexity:
 - Time complexity: O(n)
 - Space complexity: O(n)
@@ -675,7 +675,7 @@ Output: ["((()))","(()())","(())()","()(())","()()()"]
 - [Using Stack](https://leetcode.com/problems/generate-parentheses/solutions/2712761/beautiful-iterative-python-solution-with-stack/)
 - [Some Random Algos that work](https://leetcode.com/problems/generate-parentheses/solutions/3260192/three-python-solution-that-beats-100-and-91-90-and-93-3/)
 #### Solution:
-https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/generate-parentheses.py
 #### Time/Space Complexity:
 - Time complexity: O(n)
 - Space complexity: O(n)
@@ -708,5 +708,70 @@ Only solution I could come up with was to create a list with all combinations of
 NeetCode used Backtracking, and by obeying just some simple intuitive rules (Add `(` if `( < n`, Add `)` if `) < (` and return IFF `( == ) == n`), the solution became quite simple and efficient as well.
 
 **Somewhat Familiar with Backtracking, but not enough practical exposure for the mind to go there when i saw this problem. Need to learn more about that and figure out the kind of problems where it can be used.**
+
+---
+
+
+### [Daily Temperatures:](https://leetcode.com/problems/daily-temperatures/description/)
+Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
+
+Example:
+Input: temperatures = [73,74,75,71,69,72,76,73]
+Output: [1,1,4,2,1,1,0,0]
+
+#### Different Possible Mindsets:
+- [Brute Force](https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py)
+- [Using Stack (containing [Temp, Index])](https://github.com/neetcode-gh/leetcode/blob/main/python/0739-daily-temperatures.py)
+- [Using Stack (containing only Index)](https://leetcode.com/problems/daily-temperatures/solutions/2506436/python-stack-97-04-faster-simplest-solution-with-explanation-beg-to-adv-monotonic-stack/)
+- [Without Stack (O(n) solution)](https://leetcode.com/problems/daily-temperatures/solutions/838903/python-o-n-time-and-o-1-space-without-stack/)
+- [Many Different Approaches](https://leetcode.com/problems/daily-temperatures/solutions/275884/python-4-different-solutions-from-easy-to-elegant/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/min-stack.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (both are fast, but different approaches)
+```python
+# most concise version of the common solution, using a Stack
+class Solution:
+    def dailyTemperatures(self, T):
+        ans = [0] * len(T)
+        stack = []
+        for i, t in enumerate(T):
+          while stack and T[stack[-1]] < t:
+            cur = stack.pop()
+            ans[cur] = i - cur
+          stack.append(i)
+        return ans
+```
+
+```python
+# fastest and without using a Stack
+class Solution(object):
+    def dailyTemperatures(self, temperatures):
+        """
+        :type temperatures: List[int]
+        :rtype: List[int]
+        """
+        ans = [0]*len(temperatures)
+        hottest = 0
+        for i in range(len(temperatures)-1,-1,-1):
+            temp = temperatures[i]
+            if temp >= hottest:
+                hottest = temp
+                continue
+            days = 1
+            while temperatures[i+days]<=temp:
+                days+=ans[i+days]
+            ans[i] = days
+        return ans
+```
+
+### Comments
+Came Up quite easily with the naive approach i.e.; a nested loop, where for each element, we find the index that has a value greater than that element and see how far away that value is (index where such value is found - current index). However, this solution exceeded the time limit for bigger inputs so not good enough.
+
+NeedCode's approach is O(n) and included a stack of type [temp, index] where each value is popped if it is smaller than the current Temp.
+
+**Need to consider using Tuples to store multiple pieces of info at one point/index of Stack OR Hash. Couldn't figure out a soltuion other than Naive because of that, cause i couldn't figure out how to keep track of index in stack. But devised the Naive solution relatively fast so decent job.**
 
 ---
