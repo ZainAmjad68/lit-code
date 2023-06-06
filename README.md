@@ -775,3 +775,63 @@ NeedCode's approach is O(n) and included a stack of type [temp, index] where eac
 **Need to consider using Tuples to store multiple pieces of info at one point/index of Stack OR Hash. Couldn't figure out a soltuion other than Naive because of that, cause i couldn't figure out how to keep track of index in stack. But devised the Naive solution relatively fast so decent job.**
 
 ---
+
+
+
+### [Car Fleet:](https://leetcode.com/problems/car-fleet/description/)
+There are n cars going to the same destination along a one-lane road. The destination is target miles away.
+
+You are given two integer array position and speed, both of length n, where position[i] is the position of the ith car and speed[i] is the speed of the ith car (in miles per hour).
+
+A car can never pass another car ahead of it, but it can catch up to it and drive bumper to bumper at the same speed. The faster car will slow down to match the slower car's speed. The distance between these two cars is ignored (i.e., they are assumed to have the same position).
+
+A car fleet is some non-empty set of cars driving at the same position and same speed. Note that a single car is also a car fleet.
+
+If a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.
+
+Return the number of car fleets that will arrive at the destination.
+
+#### Different Possible Mindsets:
+- [Increasing Stack](https://leetcode.com/problems/car-fleet/solutions/1537985/python3-increasing-stack/)
+- [Without Stack (see comment)](https://leetcode.com/problems/car-fleet/solutions/255589/python-code-with-explanations-and-visualization-beats-95/)
+- [Greedy Pattern](https://leetcode.com/problems/car-fleet/solutions/1299193/python-greedy-pattern-explained/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/car-fleet.py
+#### Time/Space Complexity:
+- Time complexity: O(nlog(n))
+- Space complexity: O(n)
+### Best Other Solution (simple and fast)
+```python
+# fastest and without using a Stack
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        prev_t = None
+        n = 0
+        for pos, vel in sorted(zip(position, speed))[::-1]:
+            dist = target - pos
+            t = dist / vel
+            if not prev_t or t > prev_t:
+                prev_t = t
+                n += 1
+        return n
+```
+
+### Comments
+My intuition was that if a car meets with another car, they move at the speed of the slower car among them. So, moving at that speed, if another car cathes up to them, the above process repeats. And so the loop runs until all the cars have reached the target
+For each iteration, each car takes the next step i.e.; move position by its speed, and then we check if any of the cars coincide. if they do, we update the speed by min(car x, car y, car ..);
+We also check if any fleet has reached the destination and if so, we increase a counter We have to count how many times car/s reach the destination (whether together in a fleet or by themselves).
+
+However, the above ignores the fact that we just need to check which cars are together at the target, so we can just compare the times of different cars reaching the target.
+
+
+NeedCode's approach is to take this as a system of linear equations, with time on X-Axis and position on Y-Axix, whereas the speed is the slope of how it moves. And that slope will tell us whether any cars meet at some point.
+
+The actual solution is to sort the cars by position and start by the furthest car. Then, check if the car behind it will reach the destination before this car. If yes, they're going to collide at some point and become a fleet. So, remove the car that's behind since it will slow down to the speed of the car ahead when they collide and continue the comparion of the furthest car with the next car in behind.
+And using the same logic, if the behind car takes more time than the head of the fleet => that means that it will not be fleet with the head car => meaning we have new fleet started.
+
+****Use (Target - Position)/Speed to get the time a car will reach its destination****
+
+**I was making the problem more complicated, by checking everything at each position. But if we just solve for the target, things become much more simple.**
+
+---
+
