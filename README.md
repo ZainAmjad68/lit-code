@@ -835,3 +835,45 @@ And using the same logic, if the behind car takes more time than the head of the
 
 ---
 
+
+### [Largest Rectangle in Histogram:](https://leetcode.com/problems/largest-rectangle-in-histogram)
+Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
+#### Different Possible Mindsets:
+- [Stack](https://leetcode.com/problems/largest-rectangle-in-histogram/solutions/28917/ac-python-clean-solution-using-stack-76ms/)
+- [Monotone Increasing Stack](https://leetcode.com/problems/largest-rectangle-in-histogram/solutions/688492/python-monotone-increasing-stack-similar-problems-attached/)
+- [Divide and Conquer](https://leetcode.com/problems/largest-rectangle-in-histogram/solutions/894294/python-divide-conquer-with-comments-o-nlogn/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/largest-rectangle-histogram.py
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (simple and fast)
+```python
+def largestRectangleArea(self, height):
+    height.append(0)
+    stack = [-1]
+    ans = 0
+    for i in xrange(len(height)):
+        while height[i] < height[stack[-1]]:
+            h = height[stack.pop()]
+            w = i - stack[-1] - 1
+            ans = max(ans, h * w)
+        stack.append(i)
+    height.pop()
+    return ans
+```
+
+### Comments
+
+Very Hard to wrap your head around. The main intuition is to that once we know that we can't extend the area of a bar any further (i.e.; bars are in decreasing trajectory towards the right), we pop it and see if its area was higher than the max one so far, if so, assign it to max. And since we only pop the most recent bars and then go from there, a stack is a good Data Structure to use.
+
+Here are some explanations:
+- https://leetcode.com/problems/largest-rectangle-in-histogram/solutions/28917/ac-python-clean-solution-using-stack-76ms/comments/492440
+- https://leetcode.com/problems/largest-rectangle-in-histogram/solutions/28917/ac-python-clean-solution-using-stack-76ms/comments/186913
+
+**Watched the LeetCode solution and solved it, but unlikely that i'll be able to retain it in memory.**
+
+---
+
+
