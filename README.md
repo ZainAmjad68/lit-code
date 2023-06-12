@@ -876,4 +876,32 @@ Here are some explanations:
 
 ---
 
+## Binary Search Problems
+
+### [Binary Search:](https://leetcode.com/problems/binary-search)
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+#### Different Possible Mindsets:
+- [Two Pointers and While Loop](https://leetcode.com/problems/binary-search/solutions/423162/binary-search-101/)
+- [Recursion](https://leetcode.com/problems/binary-search/solutions/2573688/python-binary-search/)
+- [Array Slicing (Bad)](https://leetcode.com/problems/binary-search/solutions/3131273/worst-log-n-recursive-solution-python/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/binary-search.py
+#### Time/Space Complexity:
+- Time complexity: O(logn)
+- Space complexity: O(n)
+### Best Other Solution (difficult to understand, but a two liner)
+```python
+def search(self, nums, target):
+    index = bisect.bisect_left(nums, target)
+    return index if index < len(nums) and nums[index] == target else -1
+```
+### Comments
+Tried to do through finding Middle and then Array Slicing, but ran into problems. Then, used the two pointer method, which is quite simple and also easy to implement.
+
+**Didn't have the Two Pointer solution in mind, also was trying for recursion but figured out after a bit that a recursive solution is easier with a helper function (difficult to track index otherwise).**
+
+---
 
