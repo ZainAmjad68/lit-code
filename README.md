@@ -905,3 +905,43 @@ Tried to do through finding Middle and then Array Slicing, but ran into problems
 
 ---
 
+### [Search 2D Matrix:](https://leetcode.com/problems/search-a-2d-matrix)
+You are given an m x n integer matrix matrix with the following two properties:
+
+Each row is sorted in non-decreasing order.
+The first integer of each row is greater than the last integer of the previous row.
+Given an integer target, return true if target is in matrix or false otherwise.
+
+You must write a solution in O(log(m * n)) time complexity.
+
+#### Different Possible Mindsets:
+- [Traditional Binary Search Modified](https://leetcode.com/problems/search-a-2d-matrix/solutions/26201/a-python-binary-search-solution-o-logn/)
+- [Some Short but not very intuitive solutions](https://leetcode.com/problems/search-a-2d-matrix/solutions/1895915/python-3-short-and-readable-solutions/)
+- [My Way (not a common algorithm)](https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/search-2d-matrix.py)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/search-2d-matrix.py
+#### Time/Space Complexity:
+- Time complexity: O(log (n*m))
+- Space complexity: O(n)
+### Best Other Solution (O(m+n), just checks each rows for the existence of target)
+```python
+def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+    for row in matrix:
+        if row[-1] >= target:
+            return target in row
+    return False
+```
+### Comments
+A good problem to solve after you've just refreshed Binary Search in your mind, you get to apply it once you find where you need to do so.
+
+Algorithm is quite simple:
+- First Check if the target even exists in the matrix, by checking start and end of the matrix (as its sorted in increasing order)
+- Then, if target is within bounds, find the row where the target might exist
+- Run Binary Search on that Row
+
+**Proud that i came up with a solution all by myself that got accepted on the first try. I took 5,6 mins to think about how we could solve this, it was clear that we needed to run binary search on a row. I just needed to come up with a way to find that row.
+
+The solution was 64% faster in runtime than other submissions, and took less space than 23% of them.**
+
+---
+
