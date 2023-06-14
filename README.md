@@ -945,3 +945,45 @@ The solution was 64% faster in runtime than other submissions, and took less spa
 
 ---
 
+### [Koko Eating Bananas:](https://leetcode.com/problems/koko-eating-bananas/)
+Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
+
+Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+
+Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+
+Return the minimum integer k such that she can eat all the bananas within h hours.
+
+#### Different Possible Mindsets:
+- [Brute Force](https://leetcode.com/problems/koko-eating-bananas/solutions/1705145/python-binarysearch-optimizations-explained/)
+- [Binary Search + Optimizations](https://leetcode.com/problems/koko-eating-bananas/solutions/1705145/python-binarysearch-optimizations-explained/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/koko-eating-bananas.py
+#### Time/Space Complexity:
+- Time complexity: O(log(max(n))*n)
+- Space complexity: O(n)
+### Best Other Solution (same approach, more concise)
+```python
+def minEatingSpeed(self, piles, H):
+    l, r = 1, max(piles)
+    while l < r:
+        m = (l + r) / 2
+        if sum((p + m - 1) / m for p in piles) > H:
+            l = m + 1
+        else:
+            r = m
+    return l
+```
+### Comments
+Couldn't think of a way except brute force, but watching NeetCode made me realize how it's possible to derive a Binary Search solution from Naive one.
+
+
+Approach:	
+Brute Force is basically checking all values from 1 to max(pile) to see if it can finish the piles in h time, so O(max(pile)*pile) because in worst case we'll find that all piles can only be eaten if koko eats one pile each hour [and to eat the biggest pile in an hour, it'll need a speed of max(pile)]
+        
+
+But instead of going through every value from 1 to max(pile), we use Binary Search to narrow down and reduce computation O(log(max(pile))*pile).
+
+However, this solution, though working still exceeded time limit so perhaps some other approaches might be better.
+
+---
