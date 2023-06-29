@@ -1000,64 +1000,22 @@ Given the sorted rotated array nums of unique elements, return the minimum eleme
 You must write an algorithm that runs in O(log n) time.
 
 #### Different Possible Mindsets:
-- [Brute Force](https://leetcode.com/problems/koko-eating-bananas/solutions/1705145/python-binarysearch-optimizations-explained/)
-- [Binary Search + Optimizations](https://leetcode.com/problems/koko-eating-bananas/solutions/1705145/python-binarysearch-optimizations-explained/)
+- [Intuitive](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/solutions/1436502/python-binary-search-with-picture-clean-concise/)
+- [Most Common](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/solutions/396767/simple-binary-search/)
 #### Solution:
 https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/min-in-rotated-sorted-array.py
 #### Time/Space Complexity:
-- Time complexity: O(log(max(n))*n)
+- Time complexity: O(log(n))
 - Space complexity: O(n)
 ### Best Other Solution (same approach, more concise)
 ```python
-def minEatingSpeed(self, piles, H):
-    l, r = 1, max(piles)
-    while l < r:
-        m = (l + r) / 2
-        if sum((p + m - 1) / m for p in piles) > H:
-            l = m + 1
-        else:
-            r = m
-    return l
+def findMin(self, nums): # if no time constraint
+	return min(nums)
 ```
 ### Comments
 
+The Solution seen commonly is concise but might not come naturally. Even after you've seen it, it takes a couple of visual runs of the code to properly understand it.
 
-
----
-
-### [Find Minimum in Rotated Sorted Array:](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
-Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
-
-[4,5,6,7,0,1,2] if it was rotated 4 times.
-[0,1,2,4,5,6,7] if it was rotated 7 times.
-Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
-
-Given the sorted rotated array nums of unique elements, return the minimum element of this array.
-
-You must write an algorithm that runs in O(log n) time.
-
-#### Different Possible Mindsets:
-- [Brute Force](https://leetcode.com/problems/koko-eating-bananas/solutions/1705145/python-binarysearch-optimizations-explained/)
-- [Binary Search + Optimizations](https://leetcode.com/problems/koko-eating-bananas/solutions/1705145/python-binarysearch-optimizations-explained/)
-#### Solution:
-https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/min-in-rotated-sorted-array.py
-#### Time/Space Complexity:
-- Time complexity: O(log(max(n))*n)
-- Space complexity: O(n)
-### Best Other Solution (same approach, more concise)
-```python
-def minEatingSpeed(self, piles, H):
-    l, r = 1, max(piles)
-    while l < r:
-        m = (l + r) / 2
-        if sum((p + m - 1) / m for p in piles) > H:
-            l = m + 1
-        else:
-            r = m
-    return l
-```
-### Comments
-
-
+**Need to keep in mind the trick/technique for these type of questions.**
 
 ---
