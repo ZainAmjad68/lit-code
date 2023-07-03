@@ -1019,3 +1019,49 @@ The Solution seen commonly is concise but might not come naturally. Even after y
 **Need to keep in mind the trick/technique for these type of questions.**
 
 ---
+
+### [Search In Rotated Sorted Array:](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
+To be Done.!
+---
+
+### [Time Based Key Value Store:](https://leetcode.com/problems/time-based-key-value-store/description/)
+Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+
+Implement the TimeMap class:
+
+TimeMap() Initializes the object of the data structure.
+void set(String key, String value, int timestamp) Stores the key key with the value value at the given time timestamp.
+String get(String key, int timestamp) Returns a value such that set was called previously, with timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns "".
+
+#### Different Possible Mindsets:
+- [Linear Search](https://leetcode.com/problems/time-based-key-value-store/solutions/2673112/python-dictionary-linear-search/)
+- [Binary Search](https://leetcode.com/problems/time-based-key-value-store/solutions/408651/python-clean-solution-binary-search/)
+- [Using Bisect Module](https://leetcode.com/problems/time-based-key-value-store/solutions/1223226/python3-clean-and-efficient-code-o-1-o-log-n/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/time-based-key-value-store.py
+#### Time/Space Complexity:
+- Time complexity: O(log(n))
+- Space complexity: O(n)
+### Best Other Solution (concise but not intuitive at all)
+```python
+class TimeMap:
+    def __init__(self):
+        self.times = collections.defaultdict(list)
+        self.values = collections.defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.times[key].append(timestamp)
+        self.values[key].append(value)
+
+    def get(self, key: str, timestamp: int) -> str:
+        i = bisect.bisect(self.times[key], timestamp)
+        return self.values[key][i - 1] if i else ''
+```
+### Comments
+
+A simple problem but the description is not well stated. Was able to code in 10,15 mins. The strictly increasing timestamp constraint makes sense (time is always increasing so no need to sort for Binary Search) but is a bit confusing because we're using _int_ as timestamp here (which isn't guaranteed to increase strictly).
+
+
+**One of the few problems where Binary Search just makes sense. Though my solution, even with binary search, was only faster than 15% and took less space than 50%.**
+
+---
