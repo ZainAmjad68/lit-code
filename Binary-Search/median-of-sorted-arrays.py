@@ -29,4 +29,4 @@ class Solution(object):
             elif Aleft > Bright:
                 r = i - 1;
             else:
-                r = i + 1;
+                l = i + 1;
