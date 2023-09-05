@@ -876,6 +876,40 @@ Here are some explanations:
 
 ---
 
+### [Reverse Substrings Between Each Pair of Parentheses:](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/)
+You are given a string s that consists of lower case English letters and brackets.
+Reverse the strings in each pair of matching parentheses, starting from the innermost one.
+Your result should not contain any brackets.
+
+#### Different Possible Mindsets:
+- [Stack](https://github.com/ZainAmjad68/lit-code/blob/main/Stack/reverse-substrings-between-parentheses.js)
+- [Regex](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/solutions/818312/javascript-beats-98-of-the-runtime-with-comments/)
+- [Recursion](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/solutions/2290806/python-sol-recursion-and-stack-sol-detailed-explanation-with-pictrue/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/reverse-substrings-between-parentheses.js
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (simple, but uses Regex)
+```js
+function reverseInParentheses(inputString) {
+    while (inputString.includes("(")) {
+        inputString = inputString.replace(/\(([^()]*)\)/, (_, contents) => {
+            return [...contents].reverse().join('');
+        });
+    }
+    return inputString;
+}
+```
+
+### Comments
+
+Once you remember to use Stack for Nested Parentheses, that solution is pretty intuitive and simple. Couldn't come up with this on my own as i was making it too complicated, but wrote the solution by hand once i understood it.
+
+**Stack solution is easy and does not contain any RegEx, ideal for interview situations.**
+
+---
+
 ## Binary Search Problems
 
 ### [Binary Search:](https://leetcode.com/problems/binary-search)
