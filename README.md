@@ -876,6 +876,40 @@ Here are some explanations:
 
 ---
 
+### [Reverse Substrings Between Each Pair of Parentheses:](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/)
+You are given a string s that consists of lower case English letters and brackets.
+Reverse the strings in each pair of matching parentheses, starting from the innermost one.
+Your result should not contain any brackets.
+
+#### Different Possible Mindsets:
+- [Stack](https://github.com/ZainAmjad68/lit-code/blob/main/Stack/reverse-substrings-between-parentheses.js)
+- [Regex](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/solutions/818312/javascript-beats-98-of-the-runtime-with-comments/)
+- [Recursion](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/solutions/2290806/python-sol-recursion-and-stack-sol-detailed-explanation-with-pictrue/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Stack/reverse-substrings-between-parentheses.js
+#### Time/Space Complexity:
+- Time complexity: O(n)
+- Space complexity: O(n)
+### Best Other Solution (simple, but uses Regex)
+```js
+function reverseInParentheses(inputString) {
+    while (inputString.includes("(")) {
+        inputString = inputString.replace(/\(([^()]*)\)/, (_, contents) => {
+            return [...contents].reverse().join('');
+        });
+    }
+    return inputString;
+}
+```
+
+### Comments
+
+Once you remember to use Stack for Nested Parentheses, that solution is pretty intuitive and simple. Couldn't come up with this on my own as i was making it too complicated, but wrote the solution by hand once i understood it.
+
+**Stack solution is easy and does not contain any RegEx, ideal for interview situations.**
+
+---
+
 ## Binary Search Problems
 
 ### [Binary Search:](https://leetcode.com/problems/binary-search)
@@ -1065,3 +1099,46 @@ A simple problem but the description is not well stated. Was able to code in 10,
 **One of the few problems where Binary Search just makes sense. Though my solution, even with binary search, was only faster than 15% and took less space than 50%.**
 
 ---
+
+### [Median of Two Sorted Arrays:](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).
+
+#### Different Possible Mindsets:
+- [Merge Sort (not optimal but easier to understand)](https://leetcode.com/problems/median-of-two-sorted-arrays/solutions/3431113/merge-sort-approach/)
+- [Binary Search](https://leetcode.com/problems/median-of-two-sorted-arrays/solutions/3489494/c-java-python-javascript-o-log-min-m-n-iterative-solution-with-explanation/)
+- [Binary Search Alternate (easier to digest)](https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/median-of-sorted-arrays.py)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/median-of-sorted-arrays.py
+#### Time/Space Complexity:
+- Time complexity: O(log(m+n))
+- Space complexity: O(m+n)
+### Best Other Solution (not O(log (m+n) but concise)
+```python
+def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+    merge=sorted(nums1+nums2);
+    l=len(merge);
+    if l%2==0:
+        return (merge[l//2]+merge[l//2-1])/2
+    return merge[l//2]
+```
+### Comments
+
+FYI, median is the middle value, and if there are two middle values, then its their average.
+Simplest Solution is to merge the arrays and then compute but merging take O(m+n) time so that's out of the window.
+
+
+**Optimal Solution Intuition:**
+Given two sorted arrays nums1 and nums2 of size n1 and n2 respectively, the median of the combined sorted array can be found by dividing the elements of the combined sorted array into two halves of equal length such that one half is always greater than the other. The median is then the average of the maximum element of the left half and the minimum element of the right half if the total number of elements is even, or the maximum element of the left half if the total number of elements is odd.
+
+
+**Algorithm (Hint: We run Binary Search only on the smaller array):**
+Find middle of the smaller array, and consider elements on the left as the left partition. Now, find left partition of bigger array by using: _(total elements in both arrays - size of left partition in smaller array)_.
+To check if our partitions are correct, check if first element in the right partition of smaller array is smaller or equal to first right partition element in bigger array and vice versa. If yes, we're good otherwise, make the left partition of the smaller array one element smaller if its right most element was bigger or make the left partition element bigger if its right most element was smaller and check again.
+Now we get the right partition, find the median by taking: _(min(last element in left partition of both arrays) + max(first element in right partition of both arrays))/2_
+
+**Hard to come up with this solution on the spot, but if solved before, it is intuitive enough to make decent progress during an interview.**
+
+---
+
