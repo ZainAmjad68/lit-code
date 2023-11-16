@@ -29,6 +29,9 @@ First thought was to use a brute force for loop that scans the entire array for 
 
 ### [Valid Anagram:](https://leetcode.com/problems/valid-anagram/description/)
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
 #### Different Possible Mindsets:
 - [Hash Map](https://github.com/ZainAmjad68/lit-code/blob/main/Array/valid-anagram.py)
 - [Sorting both strings and comparing.](https://leetcode.com/problems/valid-anagram/solutions/3132985/python-simple-one-line-solution-explained/)
@@ -53,7 +56,10 @@ The above idea evolved to having two dictionaries for both strings, with each co
 ---
 
 ### [Two Sum:](https://leetcode.com/problems/two-sum/)
-Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+
 #### Different Possible Mindsets:
 - [Hash Map](https://github.com/ZainAmjad68/lit-code/blob/main/Array/two-sum.py)
 - [Brute Force](https://leetcode.com/problems/two-sum/solutions/3353650/brute-force-solution/)
