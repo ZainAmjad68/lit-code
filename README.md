@@ -1060,8 +1060,39 @@ The Solution seen commonly is concise but might not come naturally. Even after y
 
 ---
 
-### [Search In Rotated Sorted Array:](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
-To be Done.!
+### [Search In Rotated Sorted Array:](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+#### Different Possible Mindsets:
+- [Traversal](https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/2831184/beats-99-submissions-fastest-and-easiest-one-liner/)
+- [Binary Search](https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/2759124/most-efficient-solution-binary-search-modified-for-rotated-sorted-list/)
+- [Using Bisect Module](https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/1732232/python-using-bisect-with-a-key-function/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/search-in-rotated-sorted-array.py
+#### Time/Space Complexity:
+- Time complexity: O(log(n))
+- Space complexity: O(n)
+### Best Other Solution (concise and relatively easy)
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target in nums :
+            return nums.index(target)
+        else :
+            return -1
+```
+### Comments
+
+Works by repeatedly checking which portion of the array (left or right) is sorted and then adjusting the pointers to continue the search in the appropriate direction.
+
+**A not so straight forward problem. Not many approaches besides Binary Search to solve it either.**
+
 ---
 
 ### [Time Based Key Value Store:](https://leetcode.com/problems/time-based-key-value-store/description/)
