@@ -1063,6 +1063,29 @@ Given the array nums after the possible rotation and an integer target, return t
 
 You must write an algorithm with O(log n) runtime complexity.
 
+#### Different Possible Mindsets:
+- [Traversal](https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/2831184/beats-99-submissions-fastest-and-easiest-one-liner/)
+- [Binary Search](https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/2759124/most-efficient-solution-binary-search-modified-for-rotated-sorted-list/)
+- [Using Bisect Module](https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/1732232/python-using-bisect-with-a-key-function/)
+#### Solution:
+https://github.com/ZainAmjad68/lit-code/blob/main/Binary-Search/search-in-rotated-sorted-array.py
+#### Time/Space Complexity:
+- Time complexity: O(log(n))
+- Space complexity: O(n)
+### Best Other Solution (concise and relatively easy)
+```python
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        if target in nums :
+            return nums.index(target)
+        else :
+            return -1
+```
+### Comments
+
+Works by repeatedly checking which portion of the array (left or right) is sorted and then adjusting the pointers to continue the search in the appropriate direction.
+
+**A not so straight forward problem. Not many approaches besides Binary Search to solve it either.**
 
 ---
 
